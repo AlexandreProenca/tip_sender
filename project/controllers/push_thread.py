@@ -37,7 +37,7 @@ class PushThread(threading.Thread):
 
 
 def check_and_push(nome, tip, hora):
-    PUSH_PAYLOAD['contents'] = {"en": "Jogo " + nome}
+    PUSH_PAYLOAD['contents'] = {"en": nome}
     r = requests.post(PUSH_URL, data=json.dumps(PUSH_PAYLOAD), headers=HEADERS)
 
 
