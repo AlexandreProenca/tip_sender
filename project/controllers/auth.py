@@ -3,11 +3,10 @@ from project import app
 from bottle import template, request
 from datetime import datetime
 from firebase import firebase
-
+from push_thread import PushThread
 
 FIREBASE_URL = "https://app4tips.firebaseio.com"
 
-debug = True
 
 @app.route('/', method='GET')
 def index():
@@ -22,9 +21,11 @@ def login():
             "tip": request.POST['tip'],
             "hora": server_time()
         })
-
     except Exception as e:
         print "EXceptipn ", e
+
+    p = PushThread(request.POST['nome'],request.POST['tip'],request.POST['nome'])
+    p.start()
 
     return template('index', message='')
 
