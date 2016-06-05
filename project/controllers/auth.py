@@ -19,8 +19,8 @@ def login():
     try:
         firebase.FirebaseApplication(FIREBASE_URL, None).post('/analises', {
             "nome": request.POST['nome'],
-            "hora": request.POST['tip'],
-            "tip": server_time()
+            "tip": request.POST['tip'],
+            "hora": server_time()
         })
 
     except Exception as e:
