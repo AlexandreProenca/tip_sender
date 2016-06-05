@@ -17,7 +17,7 @@ logging.basicConfig(format='[%(asctime)s] - %(message)s',
 
 #debug(True)
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 80))
+    port = int(os.environ.get("PORT", 5000))
     logging.info("SERVER STARTED ON PORT [%d]" % port)
     run(app, reloader=False, host='0.0.0.0', port=port)
 
