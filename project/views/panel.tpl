@@ -1,0 +1,1 @@
+%rebase layout/panel message=message

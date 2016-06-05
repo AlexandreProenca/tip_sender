@@ -1,1 +1,1 @@
-%rebase layout/index message=message
+%rebase layout/login message=message
