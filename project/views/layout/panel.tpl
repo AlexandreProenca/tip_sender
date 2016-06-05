@@ -21,7 +21,7 @@
 
       </div>
        <div class="group">
-        <input type="text" name="tip" placeholder="Dica de gols para partida" required><span class="highlight"></span><span class="bar"></span>
+        <input type="text" name="tip" placeholder="Sugestão de aposta" required><span class="highlight"></span><span class="bar"></span>
        </div>
     <button type="submit" class="button buttonBlue">Enviar
     <div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
