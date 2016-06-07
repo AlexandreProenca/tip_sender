@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from project import app
-from bottle import template, request, redirect
+from bottle import template, request, redirect, response
 from datetime import datetime
 from firebase import firebase
 from push_thread import PushThread
@@ -17,9 +17,11 @@ def login():
     password = request.POST['password']
 
     if username == 'admin' and password == 'f':
+        response.set_cookie("account", username, secret='!2jasdk332*hjsdhjjj')
         return redirect('/panel', code=302)
+
     else:
-        return template('index', message='username or password invalid')
+        return template('index', message='Username or password invalid')
 
 
 @app.route('/login', method=['GET'])
@@ -29,7 +31,11 @@ def login():
 
 @app.route('/panel', method=['GET'])
 def panel():
-    return template('panel', message='')
+    username = request.get_cookie("account", secret='!2jasdk332*hjsdhjjj')
+    if username:
+        return template("panel", message='')
+    else:
+        return template("index", message="You are not logged in. Access denied.")
 
 
 @app.route('/panel', method=['POST'])
