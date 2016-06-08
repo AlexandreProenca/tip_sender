@@ -17,7 +17,7 @@ def login():
     password = request.POST['password']
 
     if username == 'admin' and password == 'f':
-        response.set_cookie("account", username, secret='!2jasdk332*hjsdhjjj', max_age=18000)
+        response.set_cookie("account", username, secret='!2jasdk332*hjsdhjjj')
         return redirect('/panel', code=302)
 
     else:
