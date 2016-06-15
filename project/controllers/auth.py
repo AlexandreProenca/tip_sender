@@ -3,6 +3,7 @@ from project import app
 from bottle import template, request, redirect, response
 from datetime import datetime
 from firebase import firebase
+import time
 from push_thread import PushThread
 
 
@@ -40,16 +41,18 @@ def panel():
 
 @app.route('/panel', method=['POST'])
 def panel():
+    tempo = time.time()
     try:
-        firebase.FirebaseApplication("https://app4tips.firebaseio.com", None).post('/analises', {
-            "nome": request.POST['nome'],
+        firebase.FirebaseApplication("https://moneyalert.firebaseio.com", None).post('/live_tips', {
+            "created": tempo,
             "tip": request.POST['tip'],
-            "hora": server_time()
+            "image_src": "img/bola.png",
+            "title": request.POST['title'],
         })
     except Exception as e:
         print "EXceptipn ", e
 
-    p = PushThread(request.POST['nome'], request.POST['tip'], server_time())
+    p = PushThread(request.POST['title'], request.POST['tip'], tempo)
     p.start()
 
     return template('panel', message='Your tip was sent success!')
