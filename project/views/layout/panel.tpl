@@ -17,7 +17,7 @@
     </br>
 
        <div class="group">
-        <input type="text" name="nome" placeholder="Nome da partida na Betfair" required><span class="highlight"></span><span class="bar"></span>
+        <input type="text" name="title" placeholder="Nome da partida na Betfair" required><span class="highlight"></span><span class="bar"></span>
 
       </div>
        <div class="group">
